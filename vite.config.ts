@@ -10,5 +10,11 @@ export default defineConfig({
       fileName: () => "chatbot.js",
       formats: ["iife"], // ⚠️ bắt buộc cho embed
     },
+    cssCodeSplit: false, // Include CSS in the JS bundle
+    rollupOptions: {
+      output: {
+        inlineDynamicImports: true,
+      },
+    },
   },
 });

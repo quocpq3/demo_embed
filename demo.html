@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Demo Nhúng Chatbot</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 20px;
+        background: #f5f5f5;
+      }
+      .content {
+        max-width: 800px;
+        margin: 0 auto;
+        background: white;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="content">
+      <h1>Demo Trang Web với Chatbot Nhúng</h1>
+      <p>Đây là một trang web demo để test chatbot nhúng.</p>
+      <p>Chatbot sẽ xuất hiện ở góc dưới phải của trang.</p>
+      <p>Click vào icon 💬 để mở chat.</p>
+
+      <h2>Cách nhúng chatbot vào trang web của bạn:</h2>
+      <ol>
+        <li>
+          Upload file <code>chatbot.js</code> từ thư mục <code>dist/</code> lên
+          host của bạn
+        </li>
+        <li>
+          Thêm dòng sau vào cuối thẻ <code>&lt;body&gt;</code> của trang HTML:
+        </li>
+      </ol>
+
+      <pre><code>&lt;!-- Load Chatbot Script --&gt;
+&lt;script src="path/to/chatbot.js"&gt;&lt;/script&gt;</code></pre>
+
+      <p>
+        Sau khi thêm, chatbot sẽ tự động xuất hiện và hoạt động! CSS đã được
+        tích hợp trong script.
+      </p>
+    </div>
+
+    <!-- Load Chatbot Script -->
+    <script src="./dist/chatbot.js"></script>
+  </body>
+</html>

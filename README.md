@@ -1,73 +1,111 @@
-# React + TypeScript + Vite
+# Chatbot Embed Widget
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Một widget chatbot có thể nhúng vào bất kỳ trang web nào, được xây dựng bằng React + TypeScript + Vite.
 
-Currently, two official plugins are available:
+## Tính năng
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- 💬 Chatbot với giao diện thân thiện
+- 🎨 Thiết kế responsive với Tailwind CSS
+- 🔧 Dễ dàng nhúng vào trang web
+- ⚡ Performance tối ưu với Vite
+- 🛡️ Shadow DOM isolation
 
-## React Compiler
+## Cách sử dụng
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+### 1. Build project
 
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+npm install
+npm run build
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+### 2. Upload files
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
+Upload file `chatbot.js` từ thư mục `dist/` lên host của bạn.
+
+### 3. Nhúng vào trang web
+
+Thêm code sau vào cuối thẻ `<body>` của trang HTML:
+
+```html
+<script src="path/to/chatbot.js"></script>
+```
+
+CSS đã được tích hợp trong script, không cần load riêng.
+
+### 4. Demo
+
+Mở file `demo.html` trong browser để xem demo hoạt động.
+
+## Cấu trúc project
+
+```
+src/
+├── main.tsx          # Entry point, tự động khởi tạo chatbot
+├── App.tsx           # Component chính
+├── components/
+│   └── Chatbox.tsx   # Component chatbox
+├── hooks/
+│   └── useChat.ts    # Logic xử lý chat
+└── index.css         # Global styles + Tailwind
+```
+
+## Tùy chỉnh
+
+### Thay đổi API
+
+Trong `src/hooks/useChat.ts`, thay thế fake API bằng API thật của bạn:
+
+```typescript
+const sendMessage = async (text: string) => {
+  // Thay thế bằng API call thực
+  const response = await fetch("/api/chat", {
+    method: "POST",
+    body: JSON.stringify({ message: text }),
+  });
+  const data = await response.json();
+  // ...
+};
+```
+
+### Tùy chỉnh giao diện
+
+Sửa đổi `src/components/Chatbox.tsx` và `src/index.css` để thay đổi giao diện.
+
+## Development
+
+```bash
+npm run dev      # Chạy dev server
+npm run build    # Build production
+npm run preview  # Preview build
+```
+
+## License
+
+MIT
 import reactDom from 'eslint-plugin-react-dom'
 
 export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
+globalIgnores(['dist']),
+{
+files: ['**/*.{ts,tsx}'],
+extends: [
+// Other configs...
+// Enable lint rules for React
+reactX.configs['recommended-typescript'],
+// Enable lint rules for React DOM
+reactDom.configs.recommended,
+],
+languageOptions: {
+parserOptions: {
+project: ['./tsconfig.node.json', './tsconfig.app.json'],
+tsconfigRootDir: import.meta.dirname,
+},
+// other options...
+},
+},
 ])
+
+```
+
 ```

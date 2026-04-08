@@ -2,13 +2,14 @@ import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
 
 export default defineConfig({
+  base: "./",
   plugins: [react()],
   build: {
     lib: {
       entry: "src/main.tsx",
       name: "Chatbot",
       fileName: () => "chatbot.js",
-      formats: ["iife"], // ⚠️ bắt buộc cho embed
+      formats: ["iife"], // bắt buộc cho embed
     },
     cssCodeSplit: false, // Include CSS in the JS bundle
     rollupOptions: {

@@ -49,6 +49,17 @@
     </div>
 
     <!-- Load Chatbot Script -->
-    <script src="./dist/chatbot.js"></script>
+    <script>
+      (function () {
+        const path = window.location.pathname;
+        const isPublicDemo =
+          path.includes("/public/demo.html") ||
+          path.endsWith("/public/demo.html");
+        const scriptSrc = isPublicDemo ? "../dist/chatbot.js" : "./chatbot.js";
+        const script = document.createElement("script");
+        script.src = scriptSrc;
+        document.body.appendChild(script);
+      })();
+    </script>
   </body>
 </html>
